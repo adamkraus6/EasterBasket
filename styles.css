@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+.nav-bar {
+	background-color: gray;
+	overflow: hidden;
+}
+
+.nav-bar a:hover {
+	background-color: #81ecec;
+	color: #2d3436;
+}
+
+.nav-bar a {
+	float: left;
+	color: #00cec9;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+	font-size: 17px;
+	font-family: Oswald;
+}
+
+.nav-bar a.active {
+	background-color: #00cec9;
+	color: #2d3436;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: Oswald;
+}
+
+h1 {
+	text-align: center;
+	background-color: #00cec9;
+	color: #2d3436;
+	padding: 5px;
+}
+
+p {
+	font-family: Oswald;
+}
