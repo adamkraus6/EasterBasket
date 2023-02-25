@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Oswald&display=swap");
 
 .container {
 	border: 1px solid black;
@@ -8,4 +8,17 @@
 
 body {
 	background-color: #b2bec3 !important;
+}
+
+.basket {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap-reverse;
+	max-width: 750px;
+	flex-basis: 100%;
+	margin: auto;
+}
+
+.egg {
+	flex-basis: 16.666667%;
 }
