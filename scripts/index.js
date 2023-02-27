@@ -1,3 +1,5 @@
 window.onload = () => {
-	document.getElementById("whiteEgg").onclick = () => {};
+	document.getElementById("addEgg").onclick = () => {
+		console.log(document.getElementById("eggOption").value)
+	};
 };
