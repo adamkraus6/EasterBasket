@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Oswald&display=swap");
 
 .container {
-	border: 1px solid black;
+	border: 2px solid black;
 	margin-bottom: 10px;
 	background-color: #dfe6e9;
 }
@@ -10,13 +10,16 @@ body {
 	background-color: #b2bec3 !important;
 }
 
-.basket {
+.basket-container {
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap-reverse;
 	max-width: 750px;
-	flex-basis: 100%;
 	margin: auto;
+}
+
+.basket {
+	flex-basis: 100%;
 }
 
 .egg {
@@ -27,6 +30,11 @@ p {
 	padding: 7px;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
 	font-family: Oswald, sans-serif !important;
 }
