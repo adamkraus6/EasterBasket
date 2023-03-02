@@ -1,13 +1,29 @@
 function changeEgg(newEgg) {
 	this.newEgg = newEgg;
-	this.oldEgg = document.getElementById("basket").lastChild.src;
+	this.oldEgg = document.getElementById("basket").lastChild.cloneNode();
 
 	this.exec = () => {
-		document.getElementById("basket").lastChild.src = this.newEgg;
+		let lastChild = document.getElementById("basket").lastChild;
+		switch (this.newEgg) {
+			case "White":
+				lastChild.src = WHITE_EGG;
+				break;
+			case "Blue":
+				lastChild.src = BLUE_EGG;
+				break;
+			case "Striped":
+				lastChild.src = STRIPED_EGG;
+				break;
+			case "Chocolate Bunny":
+				lastChild.src = CHOCOLATE_BUNNY;
+				break;
+		}
+		lastChild.className = "egg " + this.newEgg.slice(0, 4).toLowerCase();
 	};
 
 	this.undo = () => {
-		document.getElementById("basket").lastChild.src = this.oldEgg;
+		document.getElementById("basket").lastChild.src = this.oldEgg.src;
+		document.getElementById("basket").lastChild.className = this.oldEgg.className;
 	};
 }
 
@@ -15,10 +31,23 @@ function addEgg(newEgg) {
 	this.newEgg = newEgg;
 
 	this.exec = () => {
-		let i = document.createElement("img");
-		i.src = this.newEgg;
-		i.className = "egg";
-		document.getElementById("basket").appendChild(i);
+		let newI = document.createElement("img");
+		switch (this.newEgg) {
+			case "White":
+				newI.src = WHITE_EGG;
+				break;
+			case "Blue":
+				newI.src = BLUE_EGG;
+				break;
+			case "Striped":
+				newI.src = STRIPED_EGG;
+				break;
+			case "Chocolate Bunny":
+				newI.src = CHOCOLATE_BUNNY;
+				break;
+		}
+		newI.className = "egg " + this.newEgg.slice(0, 4).toLowerCase();
+		document.getElementById("basket").appendChild(newI);
 	};
 
 	this.undo = () => {
@@ -54,6 +83,7 @@ function changeBasket(newBasket) {
 function presetBasket(newPreset) {
 	this.newPreset = newPreset;
 	this.oldPreset = getPreset();
+
 	this.exec = () => {
 		setPreset(this.newPreset);
 		updateUI();
@@ -87,11 +117,11 @@ let setPreset = (preset) => {
 	switch (preset[0]) {
 		case "W":
 			b.src = WHITE_BASKET;
-			b.className += " white";
+			b.className += " whit";
 			break;
 		case "B":
 			b.src = BROWN_BASKET;
-			b.className += " brown";
+			b.className += " brow";
 			break;
 		default:
 			break;
@@ -105,7 +135,7 @@ let setPreset = (preset) => {
 		switch (preset[i]) {
 			case "W":
 				e.src = WHITE_EGG;
-				e.className += " white";
+				e.className += " whit";
 				break;
 			case "B":
 				e.src = BLUE_EGG;
@@ -113,11 +143,11 @@ let setPreset = (preset) => {
 				break;
 			case "S":
 				e.src = STRIPED_EGG;
-				e.className += " stripe";
+				e.className += " stri";
 				break;
 			case "C":
 				e.src = CHOCOLATE_BUNNY;
-				e.className += " choco";
+				e.className += " choc";
 				break;
 		}
 		if (i + 1 < preset.length) {

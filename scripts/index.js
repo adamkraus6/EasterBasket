@@ -67,27 +67,12 @@ window.onload = () => {
 		let basketChildren = document.getElementById("basket").childNodes;
 		let lastEgg = basketChildren[basketChildren.length - 1];
 		let choice = document.getElementById("eggOption").value;
-		let newImage;
-		switch (choice) {
-			case "White":
-				newImage = WHITE_EGG;
-				break;
-			case "Blue":
-				newImage = BLUE_EGG;
-				break;
-			case "Striped":
-				newImage = STRIPED_EGG;
-				break;
-			case "Bunny":
-				newImage = CHOCOLATE_BUNNY;
-				break;
-			default:
-				break;
-		}
 		if (lastEgg.className.includes("confirmed") || basketChildren.length < 2) {
-			hist.executeAction(new addEgg(newImage));
+			// if last egg confirmed or no eggs
+			hist.executeAction(new addEgg(choice));
 		} else {
-			hist.executeAction(new changeEgg(newImage));
+			// unconfirmed last egg
+			hist.executeAction(new changeEgg(choice));
 		}
 	};
 
@@ -95,12 +80,8 @@ window.onload = () => {
 		hist.executeAction(new confirmEgg());
 	};
 
-	document.getElementById("undo").onclick = () => {
-		hist.undoCmd();
-	};
-	document.getElementById("redo").onclick = () => {
-		hist.redoCmd();
-	};
+	document.getElementById("undo").onclick = hist.undoCmd
+	document.getElementById("redo").onclick = hist.redoCmd
 
 	document.getElementById("whiteBasket").onclick = () => {
 		hist.executeAction(new changeBasket(WHITE_BASKET));
