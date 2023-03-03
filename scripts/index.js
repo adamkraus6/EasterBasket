@@ -121,7 +121,13 @@ window.onload = () => {
 		hist.executeAction(new presetBasket(preset));
 	};
 
-	document.getElementById("save").onclick = () => {};
+	document.getElementById("save").onclick = () => {
+		let preset = getPreset();
+		if (preset.length % 2 == 0) {
+			// unconfirmed egg, dont include
+			preset = preset.slice(0, preset.length - 1);
+		}
+	};
 
 	updateUI();
 };
