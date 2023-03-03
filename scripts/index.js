@@ -6,6 +6,7 @@ var BLUE_EGG = "./images/blue_egg.png";
 var STRIPED_EGG = "./images/stripe_egg.png";
 var CHOCOLATE_BUNNY = "./images/chocolate_bunny.png";
 
+// GRADING: MANAGE
 function History() {
 	var UndoRedos = [];
 	var index = 0;
@@ -54,7 +55,7 @@ function History() {
 let updateUI = () => {
 	document.getElementById("undo").disabled = !hist.canUndo();
 	document.getElementById("redo").disabled = !hist.canRedo();
-	document.getElementById("confirm").disabled =
+	document.getElementById("confirm").disabled = document.getElementById("removeEgg").disabled =
 		document.getElementById("basket").lastChild.className.includes("confirmed") || document.getElementById("basket").childNodes.length < 2;
 };
 
@@ -69,41 +70,54 @@ window.onload = () => {
 		let choice = document.getElementById("eggOption").value;
 		if (lastEgg.className.includes("confirmed") || basketChildren.length < 2) {
 			// if last egg confirmed or no eggs
+			// GRADING: ACTION
 			hist.executeAction(new addEgg(choice));
 		} else {
 			// unconfirmed last egg
+			// GRADING: ACTION
 			hist.executeAction(new changeEgg(choice));
 		}
 	};
 
+	document.getElementById("removeEgg").onclick = () => {
+		// GRADING: ACTION
+		hist.executeAction(new removeEgg());
+	};
+
 	document.getElementById("confirm").onclick = () => {
+		// GRADING: ACTION
 		hist.executeAction(new confirmEgg());
 	};
 
-	document.getElementById("undo").onclick = hist.undoCmd
-	document.getElementById("redo").onclick = hist.redoCmd
+	document.getElementById("undo").onclick = hist.undoCmd;
+	document.getElementById("redo").onclick = hist.redoCmd;
 
 	document.getElementById("whiteBasket").onclick = () => {
-		hist.executeAction(new changeBasket(WHITE_BASKET));
+		// GRADING: ACTION
+		hist.executeAction(new changeBasket("White"));
 	};
 	document.getElementById("brownBasket").onclick = () => {
-		hist.executeAction(new changeBasket(BROWN_BASKET));
+		// GRADING: ACTION
+		hist.executeAction(new changeBasket("Brown"));
 	};
 
 	document.getElementById("base").onclick = () => {
 		// brown basket, no goodies
 		let preset = "B";
+		// GRADING: ACTION
 		hist.executeAction(new presetBasket(preset));
 	};
 	document.getElementById("all").onclick = () => {
 		// brown basket, 5 blue eggs, white egg
 		let preset = "BBCBCBCBCBCW";
+		// GRADING: ACTION
 		hist.executeAction(new presetBasket(preset));
 	};
 	document.getElementById("mixed").onclick = () => {
 		// white basket, first row striped/blue
 		// second row 3 bunny, white
 		let preset = "WSCBCSCBCSCBCCCCCCCW";
+		// GRADING: ACTION
 		hist.executeAction(new presetBasket(preset));
 	};
 

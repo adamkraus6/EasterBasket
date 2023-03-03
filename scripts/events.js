@@ -1,3 +1,4 @@
+// GRADING: COMMAND
 function changeEgg(newEgg) {
 	this.newEgg = newEgg;
 	this.oldEgg = document.getElementById("basket").lastChild.cloneNode();
@@ -27,6 +28,7 @@ function changeEgg(newEgg) {
 	};
 }
 
+// GRADING: COMMAND
 function addEgg(newEgg) {
 	this.newEgg = newEgg;
 
@@ -56,6 +58,28 @@ function addEgg(newEgg) {
 	};
 }
 
+// GRADING: COMMAND
+function removeEgg() {
+	this.oldClass;
+	this.oldSrc;
+
+	this.exec = () => {
+		let basket = document.getElementById("basket");
+		let lastChild = basket.lastChild;
+		this.oldClass = lastChild.className;
+		this.oldSrc = lastChild.src;
+		basket.removeChild(lastChild);
+	};
+
+	this.undo = () => {
+		let newI = document.createElement("img");
+		newI.className = this.oldClass;
+		newI.src = this.oldSrc;
+		document.getElementById("basket").appendChild(newI);
+	};
+}
+
+// GRADING: COMMAND
 function confirmEgg() {
 	this.exec = () => {
 		document.getElementById("basket").lastChild.className += " confirmed";
@@ -67,19 +91,31 @@ function confirmEgg() {
 	};
 }
 
+// GRADING: COMMAND
 function changeBasket(newBasket) {
 	this.newBasket = newBasket;
-	this.oldBasket = document.getElementById("basket").firstChild.src;
+	this.oldBasket = document.getElementById("basket").firstChild.cloneNode();
 
 	this.exec = () => {
-		document.getElementById("basket").firstChild.src = this.newBasket;
+		let firstChild = document.getElementById("basket").firstChild;
+		switch (this.newBasket) {
+			case "White":
+				firstChild.src = WHITE_BASKET;
+				break;
+			case "Brown":
+				firstChild.src = BROWN_BASKET;
+				break;
+		}
+		firstChild.className = "basket " + this.newBasket.slice(0, 4).toLowerCase();
 	};
 
 	this.undo = () => {
-		document.getElementById("basket").firstChild.src = this.oldBasket;
+		document.getElementById("basket").firstChild.src = this.oldBasket.src;
+		document.getElementById("basket").firstChild.className = this.oldBasket.className;
 	};
 }
 
+// GRADING: COMMAND
 function presetBasket(newPreset) {
 	this.newPreset = newPreset;
 	this.oldPreset = getPreset();
