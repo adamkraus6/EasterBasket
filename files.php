@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 	<head>
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -10,6 +11,7 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	</head>
+
 	<body>
 		<nav class="navbar navbar-default navbar-static-top">
 			<div class="container-fluid">
@@ -19,7 +21,7 @@
 				<div class="collapse navbar-collapse" id="myNavbar">
 					<ul class="nav navbar-nav navbar-left">
 						<li class="nav-item"><a href="index.html">Home</a></li>
-						<li class="nav-item active"><a href="files.html">Files</a></li>
+						<li class="nav-item active"><a href="files.php">Files</a></li>
 						<li class="nav-item"><a href="help.html">Help</a></li>
 					</ul>
 				</div>
@@ -28,12 +30,18 @@
 
 		<div class="container">
 			<br />
+			<input type="file" name="file" id="file" />
 			<button id="upload">Upload</button>
 			<br /><br />
-			File:
-			<button id="load">Load</button>
-			<button id="download">Download</button>
+			<?php
+			$path = "server";
+			$files = $files = array_diff(scandir($path), array('.', '..'));
+			foreach ($files as $element) {
+				echo $element . "<br>";
+			}
+			?>
 			<br /><br />
 		</div>
 	</body>
+
 </html>
