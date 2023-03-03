@@ -37,11 +37,13 @@
 			$path = "server";
 			$files = $files = array_diff(scandir($path), array('.', '..'));
 			foreach ($files as $element) {
-				echo $element . "<br>";
+				echo $element;
+				echo "<br />\n";
+				echo "<button>Load</button>\n";
+				echo "<button>Download</button>\n";
+				echo "<br /><br />\n";
 			}
 			?>
-			<br /><br />
 		</div>
 	</body>
-
 </html>
