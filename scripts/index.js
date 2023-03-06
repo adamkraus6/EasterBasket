@@ -62,7 +62,11 @@ let updateUI = () => {
 var hist = new History();
 
 window.onload = () => {
-	setPreset("BW");
+	let queryString = window.location.search
+	let params = new URLSearchParams(queryString);
+	let preset = params.get("preset");
+
+	setPreset(preset ? preset : "BW");
 
 	document.getElementById("addEgg").onclick = () => {
 		let basketChildren = document.getElementById("basket").childNodes;
@@ -122,17 +126,25 @@ window.onload = () => {
 	};
 
 	document.getElementById("save").onclick = () => {
+		let name = document.getElementById("fileName").value;
+		if (!name) return;
+
 		let preset = getPreset();
 		if (preset.length % 2 == 0) {
 			// unconfirmed egg, dont include
 			preset = preset.slice(0, preset.length - 1);
 		}
-		$.post("/scripts/saveFile.php", {
-			preset: getPreset()
-		},
-		(data) => {
-			// console.log(data);
-		})
+		
+		$.post(
+			"/scripts/saveFile.php",
+			{
+				name: name,
+				preset: preset,
+			},
+			(data) => {
+				// console.log(data);
+			}
+		);
 	};
 
 	updateUI();

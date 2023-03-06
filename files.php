@@ -36,15 +36,21 @@
 			<?php
 			error_reporting(E_ALL);
 			ini_set('display_errors', 1);
+
+			function download() {
+				
+			}
+
 			$path = "server";
 			$files = $files = array_diff(scandir($path), array('.', '..'));
-			foreach ($files as $element) {
-				$filepath =  $path . "/" . $element;
+			foreach ($files as $filename) {
+				$filepath =  $path . "/" . $filename;
 				$file = fopen($filepath, "r");
-				echo fread($file, filesize($filepath));
+				$preset = fread($file, filesize($filepath));
+				echo $filename;
 				echo "<br />\n";
-				echo "<button>Load</button>\n";
-				echo "<button>Download</button>\n";
+				echo "<a href=\"index.html?preset=$preset\">Load</a>\n";
+				echo "<a href=\"$filepath\" download>Download</a>\n";
 				echo "<br /><br />\n";
 			}
 			?>
