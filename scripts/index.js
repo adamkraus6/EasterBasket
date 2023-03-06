@@ -66,6 +66,7 @@ window.onload = () => {
 	let params = new URLSearchParams(queryString);
 	let preset = params.get("preset");
 
+	// use parameter preset, otherwise default
 	setPreset(preset ? preset : "BW");
 
 	document.getElementById("addEgg").onclick = () => {
@@ -135,8 +136,9 @@ window.onload = () => {
 			preset = preset.slice(0, preset.length - 1);
 		}
 		
+		// post to php with ajax/jquery
 		$.post(
-			"/scripts/saveFile.php",
+			"/scripts/savePreset.php",
 			{
 				name: name,
 				preset: preset,
