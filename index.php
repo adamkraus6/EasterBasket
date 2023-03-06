@@ -20,7 +20,7 @@
 				</div>
 				<div class="collapse navbar-collapse" id="myNavbar">
 					<ul class="nav navbar-nav navbar-left">
-						<li class="nav-item active"><a href="index.html">Home</a></li>
+						<li class="nav-item active"><a href="index.php">Home</a></li>
 						<li class="nav-item"><a href="files.php">Files</a></li>
 						<li class="nav-item"><a href="help.html">Help</a></li>
 					</ul>
@@ -53,6 +53,9 @@
 			<button id="mixed">Mixed</button>
 			<h3>Content State</h3>
 			<button id="save">Save</button>
+			<?php
+				
+			?>
 			<br />
 			<div class="basket-container" id="basket"></div>
 		</div>
