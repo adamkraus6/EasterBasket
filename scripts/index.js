@@ -127,6 +127,12 @@ window.onload = () => {
 			// unconfirmed egg, dont include
 			preset = preset.slice(0, preset.length - 1);
 		}
+		$.post("/scripts/saveFile.php", {
+			preset: getPreset()
+		},
+		(data) => {
+			// console.log(data);
+		})
 	};
 
 	updateUI();

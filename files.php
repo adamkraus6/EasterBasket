@@ -34,10 +34,14 @@
 			<button id="upload">Upload</button>
 			<br /><br />
 			<?php
+			error_reporting(E_ALL);
+			ini_set('display_errors', 1);
 			$path = "server";
 			$files = $files = array_diff(scandir($path), array('.', '..'));
 			foreach ($files as $element) {
-				echo $element;
+				$filepath =  $path . "/" . $element;
+				$file = fopen($filepath, "r");
+				echo fread($file, filesize($filepath));
 				echo "<br />\n";
 				echo "<button>Load</button>\n";
 				echo "<button>Download</button>\n";
