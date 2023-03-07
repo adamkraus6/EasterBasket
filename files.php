@@ -1,3 +1,10 @@
+<?php
+require_once "scripts/upload.php";
+
+if (isset($_GET["up"])) {
+	upload();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,7 +17,6 @@
 		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-		<script src="./scripts/files.js" type="text/javascript"></script>
 	</head>
 
 	<body>
@@ -31,8 +37,12 @@
 
 		<div class="container">
 			<br />
-			<input type="file" name="file" id="file" />
-			<button id="upload">Upload</button>
+			<form action="files.php?up=1" method="post" enctype="multipart/form-data">
+				Select file to upload:
+				<input type="file" name="fileToUpload" id="fileToUpload" />
+				<br />
+				<input type="submit" value="Upload">
+			</form>
 			<br /><br />
 			<?php
 			error_reporting(E_ALL);
@@ -41,7 +51,7 @@
 			$path = "server";
 			$files = $files = array_diff(scandir($path), array('.', '..'));
 			foreach ($files as $filename) {
-				$filepath =  $path . "/" . $filename;
+				$filepath = $path . "/" . $filename;
 				$file = fopen($filepath, "r");
 				$preset = fread($file, filesize($filepath));
 				echo $filename;
@@ -53,4 +63,5 @@
 			?>
 		</div>
 	</body>
+
 </html>
