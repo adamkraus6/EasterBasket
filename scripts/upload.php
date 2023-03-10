@@ -12,14 +12,14 @@ function upload() {
     //would be better as it names it the same as what the user uploaded.
     //or best yet, use a unique id (uniqid())
     $file = $_FILES["fileToUpload"];
-    $target_file = $target_dir . "test.txt";
+    $target_file = $target_dir . $file["name"];
 
     //how to check for file type
     $fileType =
         strtolower(pathinfo($file["name"],PATHINFO_EXTENSION));
 
     if($fileType != "basket") {
-         echo  "Only txt file types are supported. Please, try a different file.";
+         echo  "Only basket file types are supported. Please, try a different file.";
          return;
     }
 
