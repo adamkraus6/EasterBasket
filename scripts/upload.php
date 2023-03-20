@@ -4,7 +4,7 @@ ini_set('display_errors', 1);
 
 function upload() {
 	//keep uploads separate for security. uploads MUST allow public write, which is VERY unsafe if allowed in general
-    $target_dir = "../server/";
+    $target_dir = "./server/";
     $message = '';
 
     //only one file will be permitted to be saved. If you want to permit multiple saves (e.g. one for each user). This:

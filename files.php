@@ -37,6 +37,12 @@ if (isset($_GET["up"])) {
 
 		<div class="container">
 			<br />
+			<div class="dropzone">
+				<p>
+					Drag file here to upload
+				</p>
+			</div>
+			<br />
 			<form action="files.php?up=1" method="post" enctype="multipart/form-data">
 				Select file to upload:
 				<input type="file" name="fileToUpload" id="fileToUpload" />
