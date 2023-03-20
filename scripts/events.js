@@ -18,6 +18,12 @@ function changeEgg(newEgg) {
 			case "Chocolate Bunny":
 				lastChild.src = CHOCOLATE_BUNNY;
 				break;
+			case "Pale Egg":
+				lastChild.src = PALE_EGG;
+				break;
+			case "Dirt Egg":
+				lastChild.src = DIRT_EGG;
+				break;
 		}
 		lastChild.className = "egg " + this.newEgg.slice(0, 4).toLowerCase();
 	};
@@ -46,6 +52,12 @@ function addEgg(newEgg) {
 				break;
 			case "Chocolate Bunny":
 				newI.src = CHOCOLATE_BUNNY;
+				break;
+			case "Pale Egg":
+				newI.src = PALE_EGG;
+				break;
+			case "Dirt Egg":
+				newI.src = DIRT_EGG;
 				break;
 		}
 		newI.className = "egg " + this.newEgg.slice(0, 4).toLowerCase();
@@ -105,6 +117,9 @@ function changeBasket(newBasket) {
 			case "Brown":
 				firstChild.src = BROWN_BASKET;
 				break;
+			case "Grey":
+				firstChild.src = GREY_BASKET;
+				break;
 		}
 		firstChild.className = "basket " + this.newBasket.slice(0, 4).toLowerCase();
 	};
@@ -159,6 +174,10 @@ let setPreset = (preset) => {
 			b.src = BROWN_BASKET;
 			b.className += " brow";
 			break;
+		case "G":
+			b.src = GREY_BASKET;
+			b.className += " grey";
+			break;
 		default:
 			break;
 	}
@@ -184,6 +203,14 @@ let setPreset = (preset) => {
 			case "C":
 				e.src = CHOCOLATE_BUNNY;
 				e.className += " choc";
+				break;
+			case "P":
+				e.src = PALE_EGG;
+				e.className += " pale";
+				break;
+			case "D":
+				e.src = DIRT_EGG;
+				e.className += " dirt";
 				break;
 		}
 		if (i + 1 < preset.length) {

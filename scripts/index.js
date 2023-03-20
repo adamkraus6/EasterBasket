@@ -1,10 +1,13 @@
 // image file paths
 var WHITE_BASKET = "./images/white_basket.png";
 var BROWN_BASKET = "./images/brown_basket.png";
+var GREY_BASKET = "./images/grey_basket.png";
 var WHITE_EGG = "./images/white_egg.png";
 var BLUE_EGG = "./images/blue_egg.png";
 var STRIPED_EGG = "./images/stripe_egg.png";
 var CHOCOLATE_BUNNY = "./images/chocolate_bunny.png";
+var PALE_EGG = "./images/pale_egg.png";
+var DIRT_EGG = "./images/dirt_egg.png";
 
 // GRADING: MANAGE
 function History() {
@@ -62,7 +65,7 @@ let updateUI = () => {
 var hist = new History();
 
 window.onload = () => {
-	let queryString = window.location.search
+	let queryString = window.location.search;
 	let params = new URLSearchParams(queryString);
 	let preset = params.get("preset");
 
@@ -105,6 +108,10 @@ window.onload = () => {
 		// GRADING: ACTION
 		hist.executeAction(new changeBasket("Brown"));
 	};
+	document.getElementById("greyBasket").onclick = () => {
+		// GRADING: ACTION
+		hist.executeAction(new changeBasket("Grey"));
+	};
 
 	document.getElementById("base").onclick = () => {
 		// brown basket, no goodies
@@ -135,7 +142,7 @@ window.onload = () => {
 			// unconfirmed egg, dont include
 			preset = preset.slice(0, preset.length - 1);
 		}
-		
+
 		// post to php with ajax/jquery
 		$.post(
 			"/scripts/savePreset.php",
