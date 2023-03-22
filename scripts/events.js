@@ -18,10 +18,10 @@ function changeEgg(newEgg) {
 			case "Chocolate Bunny":
 				lastChild.src = CHOCOLATE_BUNNY;
 				break;
-			case "Pale Egg":
+			case "Pale":
 				lastChild.src = PALE_EGG;
 				break;
-			case "Dirt Egg":
+			case "Dirt":
 				lastChild.src = DIRT_EGG;
 				break;
 		}
@@ -53,10 +53,10 @@ function addEgg(newEgg) {
 			case "Chocolate Bunny":
 				newI.src = CHOCOLATE_BUNNY;
 				break;
-			case "Pale Egg":
+			case "Pale":
 				newI.src = PALE_EGG;
 				break;
-			case "Dirt Egg":
+			case "Dirt":
 				newI.src = DIRT_EGG;
 				break;
 		}

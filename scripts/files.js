@@ -11,5 +11,6 @@ window.onload = () => {
 		event.stopPropagation();
 
 		document.getElementById("fileToUpload").files = event.dataTransfer.files;
+		document.getElementById("uploadForm").submit();
 	};
 };
